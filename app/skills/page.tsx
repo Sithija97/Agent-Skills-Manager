@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { mockAISkills } from "../data";
 
-const Skills = () => {
+const Skills = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const skills = mockAISkills;
   return (
     <section className="p-4 flex flex-col gap-4 max-w-md mx-auto">
       <h1>Skills</h1>
@@ -10,7 +12,7 @@ const Skills = () => {
       </Link>
 
       <ul className="menu">
-        {mockAISkills.map((skill) => (
+        {skills.map((skill) => (
           <li key={skill.id}>
             <Link href={`/skills/${skill.id}`}>{skill.name}</Link>
           </li>
