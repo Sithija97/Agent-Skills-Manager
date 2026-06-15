@@ -1,4 +1,4 @@
-import { mockAISkills } from "@/app/data";
+import { mockAISkills } from "@/data";
 import { notFound } from "next/navigation";
 
 const SkillDetails = async ({

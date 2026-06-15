@@ -82,7 +82,7 @@ export const Header = () => {
                 <Link href="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link href="/skills/create">Create Skill</Link>
+                <Link href="/dashboard/skills/create">Create Skill</Link>
               </li>
               <li>
                 <button onClick={logout}>Logout</button>
