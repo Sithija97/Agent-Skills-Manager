@@ -21,6 +21,8 @@ export default function NewSkillPage() {
   const [isPublic, setIsPublic] = useState(true);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [thrownError, setThrownError] = useState<Error | null>(null);
+  if (thrownError) throw thrownError;
 
   if (!isLoading && !isAuthenticated) {
     router.push("/login");
@@ -49,8 +51,6 @@ export default function NewSkillPage() {
         user!.id,
       );
 
-      console.log(result);
-
       if (result.success) {
         router.push("/dashboard");
       } else {
@@ -58,6 +58,11 @@ export default function NewSkillPage() {
       }
     } catch (err) {
       setError("An error occurred while creating the skill");
+      setThrownError(
+        err instanceof Error
+          ? err
+          : new Error("An error occurred while creating the skill"),
+      );
     } finally {
       setIsSubmitting(false);
     }
